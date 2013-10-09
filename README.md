@@ -25,3 +25,16 @@ In order to manage infinite numbers, the project will be using the Big_int modul
 
 Once it has reached a stable state, I'd like to move to the [ZArith](http://forge.ocamlcore.org/projects/zarith/) library instead ([why?](http://stackoverflow.com/a/10515220/1987466)).
 
+
+Installation
+------------
+
+Currently, a standard installation of OCaml should be enough (`apt-get install ocaml` on Debian-based systems).
+
+Make sure to have a recent version of OCaml (developed with version 3.12.1) and the ocamllex and ocamlyacc tools installed.
+
+Normally, the shell command
+
+    make all
+
+will correctly build the binary "ocamlculator".
