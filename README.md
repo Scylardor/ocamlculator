@@ -3,11 +3,15 @@ Ocamlculator
 
 This is an attempt at enhancing the classical example of a calculator in OCaml.
 
-Making a basic calculator in OCaml is really easy. Let's try here to go a little further, e.g. compute
+Making a basic calculator in OCaml is really easy. Let's try here to go a little further, like:
 
-floating-point values, do cross-bases calculus and add some common useful mathematic functions.
+* compute floating-point values
+* do cross-bases calculus
+* use some common useful mathematic functions
+* manage several mathematical notations (infix, prefix, postfix)
+* make a great graphical user interface.
 
-A graphical user interface would then be great, maybe in GTK.
+Actually, this is really a fun-oriented project. The list of fantasies to add to the project may vary.
 
 
 Components
