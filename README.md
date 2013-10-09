@@ -1,12 +1,27 @@
-ocamlculator
+Ocamlculator
 ============
 
-A little attempt at enhancing the classical example of a calculator in OCaml.
+This is an attempt at enhancing the classical example of a calculator in OCaml.
 
-Although making a simple calculator in OCaml is really easy, we'll try here to go a little further, e.g. compute
+Making a basic calculator in OCaml is really easy. Let's try here to go a little further, like:
 
-floating-point values, and cross-bases calculus.
+* compute floating-point values
+* do cross-bases calculus
+* use some common useful mathematic functions
+* manage several mathematical notations (infix, prefix, postfix)
+* make a great graphical user interface.
 
-A graphical user interface would then be great, maybe in GTK.
+Actually, this is really a fun-oriented project. The list of fantasies to add to the project may vary.
 
+
+Components
+----------
+
+This project uses a lexical analyzer generated with **ocamllex**, and a parser generated with **ocamlyacc**.
+
+It is intended to move to [menhir](http://gallium.inria.fr/~fpottier/menhir/) when the parser reaches a stable state.
+
+In order to manage infinite numbers, the project will be using the Big_int module in the first versions.
+
+Once it has reached a stable state, I'd like to move to the [ZArith](http://forge.ocamlcore.org/projects/zarith/) library instead ([why?](http://stackoverflow.com/a/10515220/1987466)).
 
