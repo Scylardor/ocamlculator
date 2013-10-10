@@ -5,7 +5,7 @@
   }
     rule token = parse
       [' ' '\t']     { token lexbuf }     (* skip blanks *)
-          | ['\n' ]        { EOL }
+          | ['\n']        { EOL }
           | ['0'-'9']+ as lxm { INT(int_of_string lxm) }
           | '+'            { ADD }
           | '-'            { SUB }

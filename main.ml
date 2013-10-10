@@ -1,5 +1,5 @@
-(* File calc.ml *)
+(* File main.ml *)
  
-let main () = Ocamlculator.calc
+let main () = Ocamlculator.init
 
 let _ = main ()
