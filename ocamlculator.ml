@@ -1,5 +1,11 @@
 (* ********** Ocamlculator module ************** *)
 
+let known_bases = ["2"; "8"; "10"; "16"]
+
+let input_base = ref ""
+let output_base = ref ""
+ 
+
 (* Message printing error in case of an unrecognized pattern sequence *)
 let lexical_error lexbuf = 
   let badCharPos = lexbuf.Lexing.lex_last_pos in
@@ -11,7 +17,7 @@ let not_empty_line = function
   | '\n' -> false
   | _ -> true
 
-let calc = 
+let calc = fun () ->
   try
     let lexbuf = Lexing.from_channel stdin in
     while true do
@@ -26,6 +32,12 @@ let calc =
     done
   with Lexer.Eof -> print_endline "Computation finished."
 
-let init =
-  calc
-
+let initialize =
+  begin
+    let speclist = [("-ibase", Arg.Symbol (known_bases, fun ibase -> input_base := ibase), " Specifies the input calculus base");
+		    ("-obase", Arg.Symbol (known_bases, fun obase -> output_base := obase), " Specifies the output calculus base");
+		   ]
+    in let usage_msg = "Ocamlculator is a funny little calculator written in OCaml. Options available:"
+       in Arg.parse speclist (fun anon -> print_endline ("Anonymous argument: " ^ anon)) usage_msg;
+       calc();
+  end
