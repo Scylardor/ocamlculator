@@ -70,7 +70,8 @@
 
 SOURCES = lexer.mll \
 	parser.mly \
-	calc.ml
+	ocamlculator.ml \
+	calc.ml \
 
 # The executable file to generate (default a.out under Unix)
 
