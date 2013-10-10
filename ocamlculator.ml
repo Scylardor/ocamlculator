@@ -4,6 +4,7 @@ let known_bases = ["2"; "8"; "10"; "16"]
 
 let input_base = ref ""
 let output_base = ref ""
+let zero_div = ref false
 
 (* Message printing error in case of an unrecognized pattern sequence *)
 let lexical_error lexbuf = 
@@ -20,10 +21,18 @@ let calc = fun () ->
 	print_endline (Big_int.string_of_big_int result); flush stdout
       with
       (* When an empty line comes from input, the parser raises a Parser_error. *)
-      | Parsing.Parse_error -> if lexbuf.Lexing.lex_buffer.[0] != '\n' then raise Parsing.Parse_error
+      | Parsing.Parse_error ->
+	if lexbuf.Lexing.lex_buffer.[0] != '\n' then
+	  if !(zero_div) = true then (
+	    print_endline "Division by zero.";
+	    zero_div := false;
+	  )
+	  else print_endline "Malformed expression (parsing error)." 
       | Failure explain ->
 	lexical_error lexbuf;
 	Lexing.flush_input lexbuf;
+      | Division_by_zero ->
+	zero_div := true;
     done
   with Lexer.Eof -> print_endline "Computation finished."
 
