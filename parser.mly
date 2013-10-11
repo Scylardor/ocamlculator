@@ -5,7 +5,6 @@
 %token EOL
 %left ADD SUB		/* lowest precedence */
 %left MULT DIV		/* medium precedence */
-%right CARET		/* exponentiation */
 %nonassoc UMINUS        /* highest precedence */
 %start main             /* the entry point */
 %type <Big_int.big_int> main
