@@ -29,8 +29,8 @@ let calc = fun () ->
 	if lexbuf.Lexing.lex_buffer.[0] == '\n' then
 	  calc_err := Empty_line;
 	parsing_error !(calc_err);
-	calc_err := No_error;
-      | Failure explain ->
+	calc_err := No_error; (* Back to normal *)
+      | Failure explain -> (* Lexing error *)
 	let badCharPos = lexbuf.Lexing.lex_last_pos in
 	let badChar = String.make 1 (String.get lexbuf.Lexing.lex_buffer badCharPos) in
 	print_endline ("Malformed expression (unrecognized character " ^ badChar ^ " at position " ^ (string_of_int badCharPos) ^ ")");

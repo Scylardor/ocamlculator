@@ -68,10 +68,12 @@
 #
 # The Caml sources (including camlyacc and camllex source files)
 
-SOURCES = lexer.mll \
+SOURCES = BaseConverter.ml \
+	lexer.mll \
 	parser.mly \
 	ocamlculator.ml \
 	main.ml \
+
 
 # The executable file to generate (default a.out under Unix)
 

@@ -47,7 +47,6 @@ struct
 	     big_int_of_value nbr base (add_big_int big_nbr charValue) (ofs+1)
     in
     big_int_of_value rev base zero_big_int 0
-
       
   let value_of_hex hex_nbr = big_int_of_base hex_nbr "0123456789ABCDEF" "0x"
   let value_of_bin bin_nbr = big_int_of_base bin_nbr "01" "0b"
@@ -65,7 +64,8 @@ struct
     | "0o" -> value_of_oct str_nbr
     | _    -> value_of_dec str_nbr 
 
-  let string_of_value value base = 
+
+  let string_of_value value base withprefix = 
     let baseLen = big_int_of_int (String.length base)
     in
     let rec get_superior value baseLen sup = match sup with
@@ -79,31 +79,9 @@ struct
       | _ -> build_string (mod_big_int value sup) base baseLen (div_big_int sup baseLen) (str ^ (String.make 1 (base.[int_of_big_int (div_big_int value sup)])))
     in
     build_string value base baseLen sup ""
-      
-      
     
-      
-  let hex_string_of_value value = string_of_big_int value
-  let bin_string_of_value value = string_of_big_int value
-  let oct_string_of_value value = string_of_big_int value
+  let hex_string_of_value value = string_of_value value "0123456789ABCDEF"
+  let bin_string_of_value value = string_of_value value "01"
+  let oct_string_of_value value = string_of_value value "01234567"
   let dec_string_of_value value = string_of_big_int value
 end
-
-
-module Int_BaseConverter = 
-struct
-  type base = string
-    
-  let value_of_hex str = int_of_string str
-  let value_of_bin str = int_of_string str
-  let value_of_oct str = int_of_string str
-  let value_of_dec str = int_of_string str
-  let value_of_string str = int_of_string str
-    
-  let string_of_value value base = (string_of_int value) ^ base 
-  let hex_string_of_value value = string_of_int value 
-  let bin_string_of_value value = string_of_int value 
-  let oct_string_of_value value = string_of_int value 
-  let dec_string_of_value value = string_of_int value
-end
-

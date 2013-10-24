@@ -1,5 +1,5 @@
 /* File parser.mly */
-%token <Big_int.big_int> INT
+%token <Big_int.big_int> VAL
 %token ADD SUB MULT DIV
 %token LPAREN RPAREN
 %token EOL
@@ -13,7 +13,7 @@ main:
 expr EOL                { $1 }
   ;
   expr:
-    INT { $1 }
+    VAL { $1 }
  | LPAREN expr RPAREN      { $2 }
  | expr ADD expr           { Big_int.add_big_int $1 $3 }
  | expr SUB expr           { Big_int.sub_big_int $1 $3 }
